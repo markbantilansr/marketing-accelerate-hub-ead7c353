@@ -12,7 +12,6 @@ import {
   Megaphone,
   Search,
   BarChart3,
-  Camera,
   CheckCircle2,
   MessageCircle,
   Star,
