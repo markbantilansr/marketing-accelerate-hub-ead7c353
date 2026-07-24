@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { FAVICON } from "../lib/brand";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -79,20 +80,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "ADS Infinity" },
       { name: "theme-color", content: "#0f1e3d" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { title: "ADS Infinity — Brand Growth Agency in the UAE" },
-      { property: "og:title", content: "ADS Infinity — Brand Growth Agency in the UAE" },
-      { name: "twitter:title", content: "ADS Infinity — Brand Growth Agency in the UAE" },
-      { name: "description", content: "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth." },
-      { property: "og:description", content: "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth." },
-      { name: "twitter:description", content: "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1f9e0f09-7645-445a-89e2-e9a27bc5271f/id-preview-778da03a--3b4d931f-e9d8-47a7-ad5f-89f96a1f8416.lovable.app-1784804151467.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1f9e0f09-7645-445a-89e2-e9a27bc5271f/id-preview-778da03a--3b4d931f-e9d8-47a7-ad5f-89f96a1f8416.lovable.app-1784804151467.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: FAVICON, type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
