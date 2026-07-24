@@ -15,8 +15,16 @@ export const Route = createFileRoute("/work")({
           "Real challenges, real strategy, real results. Case studies from clinics, restaurants, construction, retail and corporate brands built and grown by ADS Infinity.",
       },
       { property: "og:title", content: "Selected Work — ADS Infinity" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Selected Work — ADS Infinity" },
       {
         property: "og:description",
+        content:
+          "How we've grown premium brands across healthcare, hospitality, construction and more.",
+      },
+      {
+        name: "twitter:description",
         content:
           "How we've grown premium brands across healthcare, hospitality, construction and more.",
       },

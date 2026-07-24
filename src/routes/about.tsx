@@ -15,8 +15,16 @@ export const Route = createFileRoute("/about")({
           "We help businesses build premium brands through strategy, branding, websites, content, SEO and digital marketing. Meet the team behind ADS Infinity.",
       },
       { property: "og:title", content: "About — ADS Infinity" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About — ADS Infinity" },
       {
         property: "og:description",
+        content:
+          "A premium brand growth agency in the UAE — strategy, branding, web, SEO and content under one roof.",
+      },
+      {
+        name: "twitter:description",
         content:
           "A premium brand growth agency in the UAE — strategy, branding, web, SEO and content under one roof.",
       },

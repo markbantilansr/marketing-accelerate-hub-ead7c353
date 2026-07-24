@@ -15,8 +15,16 @@ export const Route = createFileRoute("/contact")({
           "Message ADS Infinity on WhatsApp at +971 56 263 6693 for a free 30-minute brand & website consultation. Reply within 1 business hour.",
       },
       { property: "og:title", content: "Contact ADS Infinity" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact ADS Infinity" },
       {
         property: "og:description",
+        content:
+          "Book a free consultation on WhatsApp — brand, web and marketing experts.",
+      },
+      {
+        name: "twitter:description",
         content:
           "Book a free consultation on WhatsApp — brand, web and marketing experts.",
       },

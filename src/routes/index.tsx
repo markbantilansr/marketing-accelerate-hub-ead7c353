@@ -30,8 +30,16 @@ export const Route = createFileRoute("/")({
           "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth.",
       },
       { property: "og:title", content: "ADS Infinity — Brand Growth Agency in the UAE" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ADS Infinity — Brand Growth Agency in the UAE" },
       {
         property: "og:description",
+        content:
+          "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth.",
+      },
+      {
+        name: "twitter:description",
         content:
           "ADS Infinity is a premium brand growth agency. We build lead-generating websites, powerful brands, and content systems that drive measurable business growth.",
       },

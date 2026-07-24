@@ -19,8 +19,16 @@ export const Route = createFileRoute("/services")({
           "Brand strategy, branding, web design & development, digital marketing, SEO & AI search, paid media and creative production — all under one roof.",
       },
       { property: "og:title", content: "Services — ADS Infinity" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Services — ADS Infinity" },
       {
         property: "og:description",
+        content:
+          "Seven integrated systems to grow premium brands: strategy, branding, web, digital, search, performance, and creative.",
+      },
+      {
+        name: "twitter:description",
         content:
           "Seven integrated systems to grow premium brands: strategy, branding, web, digital, search, performance, and creative.",
       },
