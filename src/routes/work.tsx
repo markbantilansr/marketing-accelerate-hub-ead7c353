@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { WHATSAPP_URL } from "@/lib/brand";
-import { ArrowRight, MessageCircle, TrendingUp } from "lucide-react";
+import { ArrowRight, MessageCircle, TrendingUp, Stethoscope, UtensilsCrossed, HardHat, ShoppingBag, Briefcase, GraduationCap } from "lucide-react";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -28,6 +28,7 @@ export const Route = createFileRoute("/work")({
 const projects = [
   {
     industry: "Healthcare",
+    icon: Stethoscope,
     title: "Owning the private clinic category",
     challenge: "A high-end clinic blending in with dozens of similar-sounding competitors.",
     strategy: "Repositioning around expertise + a premium visual identity.",
@@ -36,6 +37,7 @@ const projects = [
   },
   {
     industry: "Hospitality",
+    icon: UtensilsCrossed,
     title: "From quiet dining room to 3-week waitlist",
     challenge: "Beautiful concept, invisible online, inconsistent bookings.",
     strategy: "Rebrand + reservation-first website + reels-driven content system.",
@@ -44,6 +46,7 @@ const projects = [
   },
   {
     industry: "Construction",
+    icon: HardHat,
     title: "Winning premium contracts with a premium brand",
     challenge: "Excellent build quality — weak brand and no digital pipeline.",
     strategy: "Corporate rebrand, LinkedIn thought leadership, sales-enablement site.",
@@ -52,6 +55,7 @@ const projects = [
   },
   {
     industry: "Retail",
+    icon: ShoppingBag,
     title: "A retail brand people remember on the shelf",
     challenge: "Strong product, weak shelf presence and unclear positioning.",
     strategy: "Positioning workshop + packaging system + DTC website.",
@@ -60,6 +64,7 @@ const projects = [
   },
   {
     industry: "Corporate",
+    icon: Briefcase,
     title: "A B2B rebrand that unlocked enterprise deals",
     challenge: "Consulting firm perceived as a solo shop, losing to bigger names.",
     strategy: "Premium corporate identity + industry-focused content.",
@@ -68,6 +73,7 @@ const projects = [
   },
   {
     industry: "Education",
+    icon: GraduationCap,
     title: "Filling seats with a modern digital front door",
     challenge: "Enrollment page performing well below industry benchmark.",
     strategy: "UX overhaul + Google Ads + parent-journey content.",
@@ -94,61 +100,52 @@ function WorkPage() {
           </div>
         </section>
 
-        <section className="container-page py-16 md:py-24 space-y-16">
-          {projects.map((p, i) => (
-            <article
-              key={p.title}
-              className="grid gap-10 md:grid-cols-[1fr_1.3fr] items-start"
-            >
-              <div>
-                <div
-                  className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-2 to-brand"
-                >
-                  <div
-                    className="absolute inset-0 opacity-40 mix-blend-overlay"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle at 30% 20%, white 0, transparent 45%), radial-gradient(circle at 80% 80%, white 0, transparent 30%)",
-                    }}
-                  />
-                  <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-white/15 backdrop-blur border border-white/20 px-3 py-1 text-xs font-medium">
+        <section className="container-page py-16 md:py-24 space-y-10">
+          {projects.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <article
+                key={p.title}
+                className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-soft"
+              >
+                <div className="flex flex-wrap items-center gap-4 justify-between">
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                      <Icon className="h-7 w-7" />
+                    </span>
+                    <div>
+                      <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand">
                         {p.industry}
                       </span>
-                      <span className="font-mono text-xs text-white/70">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-display font-semibold leading-tight">
-                        {p.title.split(" ").slice(0, 3).join(" ")}…
-                      </div>
+                      <h2 className="mt-2 text-2xl md:text-3xl font-semibold text-navy tracking-tight">
+                        {p.title}
+                      </h2>
                     </div>
                   </div>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    Case {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
-              </div>
 
-              <div>
-                <h2 className="text-3xl md:text-4xl font-semibold text-navy tracking-tight">{p.title}</h2>
-                <dl className="mt-8 space-y-6">
+                <dl className="mt-8 grid gap-6 md:grid-cols-3">
                   <Row label="Challenge" value={p.challenge} />
                   <Row label="Strategy" value={p.strategy} />
                   <Row label="Execution" value={p.execution} />
                 </dl>
+
                 <div className="mt-8 rounded-2xl bg-secondary p-6">
                   <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-brand font-semibold">
                     <TrendingUp className="h-4 w-4" /> Results
                   </div>
-                  <ul className="mt-3 space-y-2">
+                  <ul className="mt-3 grid gap-2 md:grid-cols-3">
                     {p.results.map((r) => (
                       <li key={r} className="text-navy font-medium">{r}</li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </section>
 
         <section className="container-page pb-20">
@@ -186,9 +183,9 @@ function WorkPage() {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid gap-1.5 md:grid-cols-[140px_1fr]">
-      <dt className="text-xs uppercase tracking-widest text-muted-foreground pt-1">{label}</dt>
-      <dd className="text-base text-foreground leading-relaxed">{value}</dd>
+    <div>
+      <dt className="text-xs uppercase tracking-widest text-muted-foreground">{label}</dt>
+      <dd className="mt-1.5 text-sm text-foreground leading-relaxed">{value}</dd>
     </div>
   );
 }

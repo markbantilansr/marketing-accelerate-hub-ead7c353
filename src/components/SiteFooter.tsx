@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { LOGO_ON_DARK, WHATSAPP_DISPLAY, WHATSAPP_URL, BRAND } from "@/lib/brand";
+import { LOGO, WHATSAPP_DISPLAY, WHATSAPP_URL, BRAND, EMAIL, EMAIL_URL } from "@/lib/brand";
 import { MessageCircle, Instagram, Facebook, Linkedin } from "lucide-react";
 
 export function SiteFooter() {
@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="bg-navy-panel text-white/80 mt-24">
       <div className="container-page py-16 grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <img src={LOGO_ON_DARK} alt="ADS Infinity" className="h-11 w-auto" />
+          <img src={LOGO} alt="ADS Infinity" className="h-12 w-auto brightness-0 invert" />
           <p className="mt-5 max-w-sm text-sm text-white/60 leading-relaxed">
             {BRAND.positioning} building lead-generating brands, websites, and
             content systems for premium businesses.
@@ -41,6 +41,11 @@ export function SiteFooter() {
           <li>
             <a href={WHATSAPP_URL()} target="_blank" rel="noreferrer" className="text-sm text-white/70 hover:text-white">
               {WHATSAPP_DISPLAY}
+            </a>
+          </li>
+          <li>
+            <a href={EMAIL_URL()} className="text-sm text-white/70 hover:text-white break-all">
+              {EMAIL}
             </a>
           </li>
           <li className="text-sm text-white/60">Reply within 1 business hour.</li>

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { LOGO_ON_LIGHT, LOGO_ON_DARK, WHATSAPP_URL } from "@/lib/brand";
+import { LOGO, WHATSAPP_URL } from "@/lib/brand";
 import { useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 
@@ -25,9 +25,9 @@ export function SiteHeader({ variant = "light" }: { variant?: "light" | "dark" }
       <div className="container-page flex h-18 items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src={isDark ? LOGO_ON_DARK : LOGO_ON_LIGHT}
+            src={LOGO}
             alt="ADS Infinity"
-            className="h-9 w-auto"
+            className={`h-10 w-auto ${isDark ? "brightness-0 invert" : ""}`}
           />
         </Link>
         <nav className="hidden md:flex items-center gap-8">
