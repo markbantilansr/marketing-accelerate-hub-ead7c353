@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/brand";
-import { MessageCircle, Clock, Zap, ShieldCheck } from "lucide-react";
+import { WHATSAPP_URL, WHATSAPP_DISPLAY, EMAIL, EMAIL_URL } from "@/lib/brand";
+import { MessageCircle, Clock, Zap, ShieldCheck, Mail } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -66,6 +66,19 @@ function ContactPage() {
                 <span className="text-left">
                   <div className="text-xs uppercase tracking-widest text-white/60">WhatsApp us</div>
                   <div className="text-lg font-semibold">{WHATSAPP_DISPLAY}</div>
+                </span>
+              </a>
+
+              <a
+                href={EMAIL_URL("Project inquiry — ADS Infinity")}
+                className="mt-4 inline-flex items-center gap-3 rounded-2xl border border-border bg-card px-6 py-4 hover:border-brand/40 hover:bg-brand/5 transition"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <Mail className="h-5 w-5" />
+                </span>
+                <span className="text-left">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Email us</div>
+                  <div className="text-base font-semibold text-navy">{EMAIL}</div>
                 </span>
               </a>
 
