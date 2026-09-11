@@ -89,7 +89,7 @@ export const Route = createFileRoute("/api/public/chat")({
               : res.status === 402 || res.status === 403
                 ? "Chat is temporarily unavailable. Please reach us on WhatsApp instead."
                 : "Something went wrong. Please try again or contact us on WhatsApp.";
-          return Response.json({ error: message }, { status: res.status });
+          return Response.json({ error: message }, { status: res.status, headers: CORS });
         }
 
         const data = (await res.json()) as {
@@ -98,7 +98,7 @@ export const Route = createFileRoute("/api/public/chat")({
         const reply =
           data.choices?.[0]?.message?.content ??
           "Sorry, I couldn't come up with an answer. Please try again.";
-        return Response.json({ reply });
+        return Response.json({ reply }, { headers: CORS });
       },
     },
   },

@@ -33,7 +33,7 @@ export function ChatWidget() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch(apiUrl("/api/chat"), {
+      const res = await fetch(apiUrl("/api/public/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next }),
