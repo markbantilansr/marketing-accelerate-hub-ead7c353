@@ -6,17 +6,21 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+const isHostingerStaticBuild = process.env["HOSTINGER_STATIC"] === "true";
+
 export default defineConfig({
   // Static pages are produced directly by TanStack; the Lovable deployment
   // still supplies its own server target through the managed build environment.
-  nitro: process.env["HOSTINGER_STATIC"] === "true" ? false : undefined,
+  nitro: isHostingerStaticBuild ? false : undefined,
   tanstackStart: {
     // Export every public page as HTML so Apache-based hosts such as Hostinger
     // can serve the site without running the Lovable server bundle.
-    prerender: {
-      enabled: true,
-      crawlLinks: true,
-      failOnError: true,
-    },
+    prerender: isHostingerStaticBuild
+      ? {
+          enabled: true,
+          crawlLinks: true,
+          failOnError: true,
+        }
+      : undefined,
   },
 });
