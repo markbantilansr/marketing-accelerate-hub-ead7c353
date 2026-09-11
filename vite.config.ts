@@ -7,6 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Static pages are produced directly by TanStack; the Lovable deployment
+  // still supplies its own server target through the managed build environment.
+  nitro: process.env["HOSTINGER_STATIC"] === "true" ? false : undefined,
   tanstackStart: {
     // Export every public page as HTML so Apache-based hosts such as Hostinger
     // can serve the site without running the Lovable server bundle.
