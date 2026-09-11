@@ -1,0 +1,14 @@
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve real generated pages and assets first.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fall back to the site's 404 page instead of exposing a server error.
+  RewriteRule ^ 404.html [L]
+</IfModule>

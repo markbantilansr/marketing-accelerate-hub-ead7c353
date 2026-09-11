@@ -11,5 +11,15 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Export every public page as HTML so Apache-based hosts such as Hostinger
+    // can serve the site without running the Lovable server bundle.
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      failOnError: true,
+    },
   },
+  // Lovable pins its own production preset. External GitHub builds use the
+  // static preset and should publish the generated `.output/public` folder.
+  nitro: { preset: "static" },
 });
