@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { LOGO, WHATSAPP_URL } from "@/lib/brand";
+import { apiUrl } from "@/lib/api";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
