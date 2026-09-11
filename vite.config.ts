@@ -19,7 +19,4 @@ export default defineConfig({
       failOnError: true,
     },
   },
-  // Lovable pins its own production preset. External GitHub builds use the
-  // static preset and should publish the generated `.output/public` folder.
-  nitro: { preset: "static" },
 });
