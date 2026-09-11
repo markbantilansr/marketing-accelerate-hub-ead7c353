@@ -33,7 +33,7 @@ export function ChatWidget() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(apiUrl("/api/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next }),
@@ -57,13 +57,13 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close chat" : "Open chat"}
-        className="fixed bottom-5 left-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-navy text-white shadow-elegant hover:bg-navy-2 transition"
+        className="fixed bottom-24 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-navy text-white shadow-elegant hover:bg-navy-2 transition"
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
       </button>
 
       {open && (
-        <div className="fixed bottom-24 left-5 z-50 flex h-[520px] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
+        <div className="fixed bottom-44 right-5 z-50 flex h-[min(520px,calc(100vh-14rem))] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
           {/* Header */}
           <div className="flex items-center gap-3 border-b border-border bg-navy px-4 py-3">
             <img src={LOGO} alt="ADS Infinity" className="h-7 w-auto brightness-0 invert" />
