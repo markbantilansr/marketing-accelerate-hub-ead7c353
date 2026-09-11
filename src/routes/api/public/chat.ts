@@ -31,7 +31,7 @@ HOW TO ANSWER
 - Never invent prices, client names, or stats not listed here. If unsure, say so and point them to WhatsApp.
 - Be warm, professional, and confident — matching a premium agency tone.`;
 
-export const Route = createFileRoute("/api/chat")({
+export const Route = createFileRoute("/api/public/chat")({
   server: {
     handlers: {
       POST: async ({ request }) => {
