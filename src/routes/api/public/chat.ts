@@ -31,20 +31,30 @@ HOW TO ANSWER
 - Never invent prices, client names, or stats not listed here. If unsure, say so and point them to WhatsApp.
 - Be warm, professional, and confident — matching a premium agency tone.`;
 
-export const Route = createFileRoute("/api/chat")({
+// Allow the chat widget to work when the site is served from another host
+// (e.g. the Hostinger-deployed build) while the API stays on Lovable.
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Max-Age": "86400",
+};
+
+export const Route = createFileRoute("/api/public/chat")({
   server: {
     handlers: {
+      OPTIONS: async () => new Response(null, { status: 204, headers: CORS }),
       POST: async ({ request }) => {
         const body = (await request.json().catch(() => null)) as {
           messages?: { role: string; content: string }[];
         } | null;
         if (!body?.messages || !Array.isArray(body.messages)) {
-          return new Response("Messages are required", { status: 400 });
+          return new Response("Messages are required", { status: 400, headers: CORS });
         }
 
         const key = process.env["LOVABLE_API_KEY"];
         if (!key) {
-          return new Response("Chat is not configured", { status: 500 });
+          return new Response("Chat is not configured", { status: 500, headers: CORS });
         }
 
         const messages = [
@@ -79,7 +89,7 @@ export const Route = createFileRoute("/api/chat")({
               : res.status === 402 || res.status === 403
                 ? "Chat is temporarily unavailable. Please reach us on WhatsApp instead."
                 : "Something went wrong. Please try again or contact us on WhatsApp.";
-          return Response.json({ error: message }, { status: res.status });
+          return Response.json({ error: message }, { status: res.status, headers: CORS });
         }
 
         const data = (await res.json()) as {
@@ -88,7 +98,7 @@ export const Route = createFileRoute("/api/chat")({
         const reply =
           data.choices?.[0]?.message?.content ??
           "Sorry, I couldn't come up with an answer. Please try again.";
-        return Response.json({ reply });
+        return Response.json({ reply }, { headers: CORS });
       },
     },
   },
