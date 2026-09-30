@@ -6,23 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig(({ command }) => {
-  // Lovable injects its server target when publishing. A normal GitHub build
-  // has no server target, so it produces files Hostinger can serve directly.
-  const isStaticBuild =
-    command === "build" &&
-    (process.env["HOSTINGER_STATIC"] === "true" || !process.env["LOVABLE_NITRO_PRESET"]);
+// `npm run build:hostinger` exports plain HTML pages for static hosts (Hostinger).
+const isStaticBuild = process.env["HOSTINGER_STATIC"] === "true";
 
-  return {
-    nitro: isStaticBuild ? false : undefined,
-    tanstackStart: {
-      prerender: isStaticBuild
-        ? {
-            enabled: true,
-            crawlLinks: true,
-            failOnError: true,
-          }
-        : undefined,
-    },
-  };
+export default defineConfig({
+  ...(isStaticBuild ? { nitro: false as const } : {}),
+  tanstackStart: isStaticBuild
+    ? { prerender: { enabled: true, crawlLinks: true, failOnError: true } }
+    : {},
 });
