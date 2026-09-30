@@ -5,3 +5,4 @@
 - [x] Verify chatbot placement above the WhatsApp button
 - [x] Publish the corrected Lovable version
 - [ ] Deploy the static package on Hostinger (blocked: no Hostinger connection is available in this workspace)
+- [ ] Google tag on every page using the saved measurement ID (blocked: need the plain ID, e.g. G-XXXX; saved secret can't be read by the static Hostinger pages)
