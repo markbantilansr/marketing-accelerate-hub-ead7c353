@@ -1,14 +1,15 @@
-# Hostinger deployment
+# Hostinger deployment (Node.js Web App)
 
-`npm run build` outside Lovable now produces plain website files in `dist/client`
-(every page, logo, favicon, `.htaccess`).
+`npm run build` outside Lovable produces plain website files in `dist/client`.
+`server.js` (root) serves them.
 
 Hostinger Node.js web app settings:
 
+- Framework: Other / Express
+- Node.js version: 22 (20+ works)
 - Build command: `npm run build`
-- Start command / entry: `npm start` (entry file `scripts/serve-static.mjs`)
+- Start command: `npm start`
+- Entry file: `server.js`
 - Output directory (if asked): `dist/client`
-- Node.js version: 22
 
-Static hosting (no Node.js) works too: upload the contents of `dist/client`.
-The chatbot is served by the Lovable site and keeps working from Hostinger.
+The chatbot gets answers from the published Lovable site, so keep it published.
