@@ -6,8 +6,13 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// `npm run build:hostinger` exports plain HTML pages for static hosts (Hostinger).
-const isStaticBuild = process.env["HOSTINGER_STATIC"] === "true";
+// Outside Lovable's own publish pipeline (e.g. Hostinger running `npm run build`),
+// export plain HTML pages instead of a server app.
+const isLovableBuild =
+  process.env["LOVABLE_SANDBOX"] === "1" || !!process.env["DEV_SERVER__PROJECT_PATH"];
+const isStaticBuild =
+  process.env["HOSTINGER_STATIC"] === "true" ||
+  (!isLovableBuild && process.argv.includes("build"));
 
 export default defineConfig({
   ...(isStaticBuild ? { nitro: false as const } : {}),

@@ -1,13 +1,14 @@
 # Hostinger deployment
 
-Configure the GitHub deployment in Hostinger with:
+`npm run build` outside Lovable now produces plain website files in `dist/client`
+(every page, logo, favicon, `.htaccess`).
 
-- Build command: `npm run build:hostinger`
-- Output directory: `dist/client`
+Hostinger Node.js web app settings:
+
+- Build command: `npm run build`
+- Start command / entry: `npm start` (entry file `scripts/serve-static.mjs`)
+- Output directory (if asked): `dist/client`
 - Node.js version: 22
 
-The output includes every public page, the Apache `.htaccess` fallback, the
-logo, favicon, styles, and scripts. The chatbot remains hosted by the Lovable
-site and is called securely from the Hostinger website.
-
-Do not upload `dist/server` or run `dist/server/index.mjs` on Hostinger.
+Static hosting (no Node.js) works too: upload the contents of `dist/client`.
+The chatbot is served by the Lovable site and keeps working from Hostinger.
