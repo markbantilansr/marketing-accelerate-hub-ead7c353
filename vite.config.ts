@@ -8,12 +8,11 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // Outside Lovable's own publish pipeline (e.g. Hostinger running `npm run build`),
 // export plain HTML pages instead of a server app.
+const isLovableBuild =
+  process.env["LOVABLE_SANDBOX"] === "1" || !!process.env["DEV_SERVER__PROJECT_PATH"];
 const isStaticBuild =
   process.env["HOSTINGER_STATIC"] === "true" ||
-  (process.env["NODE_ENV"] !== "development" &&
-    !process.env["LOVABLE_NITRO_PRESET"] &&
-    !process.env["LOVABLE_SANDBOX"] &&
-    process.argv.includes("build"));
+  (!isLovableBuild && process.argv.includes("build"));
 
 export default defineConfig({
   ...(isStaticBuild ? { nitro: false as const } : {}),
